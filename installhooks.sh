@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -e
 
+typeset -g hooksRootDir="$(dirname "$(test -L "${BASH_SOURCE[0]}" && \
+  realpath -Leq "${BASH_SOURCE[0]}" || echo "${BASH_SOURCE[0]}")")"
+
 checkDependencies() {
   typeset -a neededBinaries=("sudo" "find" "xargs" "realpath" "cmp")
   for tool in "${neededBinaries[@]}"; do
@@ -71,10 +74,12 @@ installVivaldiHooks() {
   if [ ! -e "${targetResourcesDir}/jdhooks.js" ] ||
     ! cmp -s vivaldi/jdhooks.js "${targetResourcesDir}/jdhooks.js"; then
     # Install VivaldiHooks files
-    echo "Copying VivaldiHooks files from $(pwd)/vivaldi to ${targetDir}"
+    echo "Copying hook files from ${hooksRootDir}/vivaldi to ${targetDir}"
     [ -d "${targetResourcesDir}/hooks" ] && rm -rf "${targetResourcesDir}"/hooks
-    install -Dt "${targetResourcesDir}" ./vivaldi/jdhooks.js
-    install -Dt "${targetResourcesDir}"/hooks ./vivaldi/hooks/*
+    install -Dm0644 -t "${targetResourcesDir}" \
+      "${hooksRootDir}/vivaldi/jdhooks.js"
+    install -Dm0644 -t "${targetResourcesDir}/hooks" \
+      "${hooksRootDir}"/vivaldi/hooks/*
 
     # Patch browser.html, if needed
     if ! grep -q "jdhooks.js" "${targetResourcesDir}/browser.html"; then
