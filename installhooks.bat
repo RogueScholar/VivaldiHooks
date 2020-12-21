@@ -1,3 +1,11 @@
+@echo off
+:: Batch file to install VivaldiHooks on Microsoft DOS/Windows systems
+:: Source Code Repository: <https://git.io/JLmXn>
+
+:: SPDX-FileCopyrightText: © 2016-2020 Denis Porfiryev <denis.porfiryev@nokia.com>
+
+:: SPDX-License-Identifier: WTFPL
+
 @set installhooks_args=%*& set installhooks_self=%~f0& powershell -c "(gc \"%~f0\") -replace '@set installhooks_args.*','#' | Write-Host" | powershell -c -& goto :eof
 
 $srcdir = split-path $env:installhooks_self

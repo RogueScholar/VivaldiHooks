@@ -1,14 +1,41 @@
 # VivaldiHooks
-[![License: WTFPL](https://img.shields.io/badge/License-WTFPL-brightgreen.svg)](http://www.wtfpl.net/about/)
+
+[SPDX-FileCopyrightText: © 2016-2020 Denis Porfiryev <denis.porfiryev@nokia.com>]::
+[SPDX-FileCopyrightText: 🄯 2020 Peter J. Mello <admin@petermello.net>]::
+
+[SPDX-License-Identifier: WTFPL]::
+
+[![License: WTFPL](misc/img/WTFPL-badge.png)](http://www.wtfpl.net/about/)
 
 ## About
-VivaldiHooks is a set of hooks/scripts for Vivaldi browser modding.
+
+VivaldiHooks is a set of scripts that modify the behavior of the
+[Vivaldi web browser](https://vivaldi.com/) in an effort to make it even more
+awesome than it already is.
 The main one - `jdhooks.js` - controlls mods loading and provides mod developers a way to change behaviour of Vivaldi internal components.
 
-See Wiki for [hooks descriptions](https://github.com/justdanpo/VivaldiHooks/wiki/Hooks) or [developers' howto](https://github.com/justdanpo/VivaldiHooks/wiki/Howto-dev).
+### Wiki
+
+Visit the [Wiki](https://github.com/justdanpo/VivaldiHooks/wiki) if you'd like to learn [what hooks are](https://github.com/justdanpo/VivaldiHooks/wiki/Hooks) or what is involved in [developing a hook](https://github.com/justdanpo/VivaldiHooks/wiki/Howto-dev).
+
+### Vivaldi Forum
+
+There's a thread on the Vivaldi Forum where most of the discussion among users
+of these hooks takes place available
+[here](https://forum.vivaldi.net/topic/11298/vivaldihooks-more-useful-mods). The
+list below is updated daily with direct links to the three most recent posts in
+it.
+
+#### Most recent forum posts about VivaldiHooks
+
+<!--START_SECTION:recentposts-->
+
+<!--END_SECTION:recentposts-->
 
 ## Installation
+
 ### Automatic (Windows only)
+
 Just run **installhooks.bat**. It will find installation path automatically if Vivaldi is set as your default browser.
 
 If Vivaldi is installed in "Program Files" or any other write-restricted folder, you must run the script as Administrator.
