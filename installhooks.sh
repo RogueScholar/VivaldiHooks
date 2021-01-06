@@ -6,19 +6,16 @@
 # SPDX-License-Identifier: MPL-2.0
 set -e
 
-typeset -g hooksRootDir="$(dirname "$(test -L "${BASH_SOURCE[0]}" &&
-  realpath -Leq "${BASH_SOURCE[0]}" || echo "${BASH_SOURCE[0]}")")"
-
 checkDependencies() {
   typeset -A neededBinaries=(
-    "sudo" "sudo" "find" "findutils" "xargs" "findutils" "realpath" "coreutils"
-    "cmp" "diffutils" "base64" "coreutils" "gunzip" "gzip"
+    sudo sudo find findutils xargs findutils realpath coreutils cmp diffutils
+    base64 coreutils gunzip gzip
   )
   for tool in "${!neededBinaries[@]}"; do
     if ! command -v "${tool}" &>/dev/null; then
       echo "ERROR: Cannot find the ${tool} command on your system."
-      echo -n "Please install the ${neededBinaries[$tool]} package and re-run "
-      echo "this script."
+      echo -ne "\\tPlease install the ${neededBinaries[$tool]} package and "
+      echo "re-run this script."
       exit 1
     fi
   done
@@ -77,6 +74,9 @@ selectVivaldiInstallation() {
     typeset -g targetDir="${vivaldiInstallations[0]}"
   fi
 }
+
+typeset -g hooksRootDir="$(dirname "$(test -L "${BASH_SOURCE[0]}" &&
+  realpath -Leq "${BASH_SOURCE[0]}" || echo "${BASH_SOURCE[0]}")")"
 
 installVivaldiHooks() {
   typeset -g targetResourcesDir="${targetDir}/resources/vivaldi"
